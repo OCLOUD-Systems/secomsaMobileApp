@@ -1,10 +1,11 @@
+import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-const Button = (props: any) => {
+const AddButton = (props: any) => {
   const colorScheme = useColorScheme();
   const color = Colors[colorScheme ?? "light"].tint;
 
@@ -12,21 +13,18 @@ const Button = (props: any) => {
     button: {
       padding: 10,
       backgroundColor: Colors[colorScheme ?? "light"].background,
-      borderRadius: 5,
+      borderRadius: 10,
       alignItems: "center",
       justifyContent: "center",
-    },
-    text: {
-      fontSize: 16,
-      color: color,
     },
   });
 
   return (
     <Pressable style={styles.button} onPress={props.onPress}>
-      <Text style={styles.text}>{props.title}</Text>
+      <AntDesign size={28} name="plus" color={color} />
+      <Text style={{ fontSize: 16, color: color }}>{props.Text}</Text>
     </Pressable>
   );
 };
 
-export default Button;
+export default AddButton;
