@@ -1,7 +1,14 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { StyleSheet, Text, View } from "react-native";
 import Status from "./Status";
 
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
+
 const ItemListReport = (props: any) => {
+  const colorScheme = useColorScheme();
+  const color = Colors[colorScheme ?? "light"].tint;
+
   const styles = StyleSheet.create({
         container: {
           flex: 1,
@@ -13,10 +20,7 @@ const ItemListReport = (props: any) => {
       });
   return (
     <View style={styles.container}>
-      <Image 
-        style={styles.tinyLogo}
-        source={require("")}
-      />
+      <MaterialIcons size={28} name="house" color={color} />
       <View>
         <Text style={styles.status}>{props.reportId}</Text>
         <Text style={styles.status}>{props.title}</Text>

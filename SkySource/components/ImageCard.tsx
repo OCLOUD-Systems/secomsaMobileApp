@@ -1,12 +1,12 @@
 import React from "react";
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 const ImageCard = (props: any) => {
   const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  tinyLogo: {
+  card: {
     width: 50,
     height: 50,
   },
@@ -17,10 +17,12 @@ const ImageCard = (props: any) => {
 });
 
   return ( 
-    <Image
-        style={styles.tinyLogo}
-        source={require(props.image)}
-      />
+    <View style={styles.container}>
+            <Image
+              style={styles.card}
+              source={require(props.image)}
+            />
+          </View>
   );
 };
 

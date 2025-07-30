@@ -1,7 +1,12 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import Status from "./Status";
+import { MaterialIcons } from "@expo/vector-icons";
+import { StyleSheet, Text, View } from "react-native";
 
-const ItemListTransaction = () => {
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
+const ItemListTransaction = (props: any) => {
+  const colorScheme = useColorScheme();
+    const color = Colors[colorScheme ?? "light"].tint;
+
   const styles = StyleSheet.create({
         container: {
           flex: 1,
@@ -13,15 +18,12 @@ const ItemListTransaction = () => {
       });
   return (
     <View style={styles.container}>
-      <Image 
-        style={styles.tinyLogo}
-        source={require("")}
-      />
+      <MaterialIcons size={28} name="house" color={color} />
       <View>
         <Text style={styles.status}>{props.reportId}</Text>
         <Text style={styles.status}>{props.title}</Text>
       </View>
-      <Status status={props.status} />
+      <Text>{props.amount}</Text>
     </View>
 
   );
