@@ -1,5 +1,4 @@
 import { Tabs } from "expo-router";
-import React from "react";
 import { Platform } from "react-native";
 
 import { HapticTab } from "@/components/ui/HapticTab";
@@ -22,11 +21,14 @@ export default function TabLayout() {
           ios: {
             // Use a transparent background on iOS to show the blur effect
             position: "absolute",
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
           },
           default: {
             // Use a solid background on Android
             backgroundColor: Colors[colorScheme ?? "light"].tabBarBackground,
-            rounded: 10,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
           },
         }),
       }}
