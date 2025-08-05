@@ -1,34 +1,34 @@
-import React, { useRef } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Carousel from 'react-native-snap-carousel';
+import { busImages } from "@/data/dashboard-data";
+import React from "react";
+import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 
 const Slider = (props: any) => {
-  const carouselRef = useRef(new Carousel(props));
   const styles = StyleSheet.create({
-          slide: {
-            flex: 1,
-          },
-          title: {
-            width: 66,
-            height: 58,
-          },
-        });
+    slide: {
+      flex: 1,
+    },
+    title: {
+      width: 66,
+      height: 58,
+    },
+  });
 
-  const renderItem = (item: any, index: number) => {
-        return (
-            <View style={styles.slide}>
-                <Text style={styles.title}>{ item.title }</Text>
-            </View>
-        );
-    }
+  const ImageItem = (item: any) => {
+    return (
+      <View style={styles.slide}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Image
+          src={item.image}
+          alt={item.title}
+          style={{ width: "auto", height: "40%" }}
+        />
+      </View>
+    );
+  };
   return (
-    <Carousel
-      ref={carouselRef}
-      data={props.data}
-      renderItem={(i) => renderItem(i.item, i.index)}
-      sliderWidth={200}
-      itemWidth={200}
-    />
+    <View>
+      <FlatList data={busImages} renderItem={ImageItem} />
+    </View>
   );
 };
 
