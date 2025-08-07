@@ -2,6 +2,7 @@ import { busImages } from "@/data/dashboard-data";
 import React from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 
+
 const Slider = (props: any) => {
   const styles = StyleSheet.create({
     slide: {
