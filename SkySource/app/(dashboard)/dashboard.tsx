@@ -2,9 +2,11 @@ import Slider from "@/components/Slider";
 import { Colors } from "@/constants/Colors";
 import { busImages } from "@/data/dashboard-data";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { useFocusEffect } from "expo-router";
 import React from "react";
 import {
   Button,
+  Image,
   Linking,
   SafeAreaView,
   StyleSheet,
@@ -15,6 +17,18 @@ import {
 const Dashboard = () => {
   const colorScheme = useColorScheme();
 
+  useFocusEffect(
+    React.useCallback(() => {
+      // This effect runs when the screen is focused
+      console.log("Dashboard screen is focused");
+
+      return () => {
+        // This cleanup function runs when the screen is unfocused
+        console.log("Dashboard screen is unfocused");
+      };
+    }, [])
+  );
+
   const styles = StyleSheet.create({
     mainContainer: {
       display: "flex",
@@ -23,19 +37,25 @@ const Dashboard = () => {
       backgroundColor: Colors[colorScheme ?? "light"].secondary,
     },
     header: {
-      height: "10%",
+      height: "12%",
       width: "100%",
     },
     container: {
       padding: 10,
       height: "90%",
       width: "100%",
-      borderTopLeftRadius: 40,
-      borderTopRightRadius: 40,
+      borderTopLeftRadius: 50,
+      borderTopRightRadius: 50,
       backgroundColor: Colors[colorScheme ?? "light"].primary,
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
+    },
+    text: {
+      color: Colors[colorScheme ?? "light"].text,
+      fontSize: 16,
+      textAlign: "center",
+      marginVertical: 10,
     },
   });
 
@@ -45,15 +65,21 @@ const Dashboard = () => {
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <View style={styles.header}></View>
+      <View style={styles.header}>
+        <Image
+          width={300}
+          height={50}
+          source={require("../../assets/images/KADIZLONG.png")}
+        />
+      </View>
       <View style={styles.container}>
-        <View className="">
-          <Slider className="" images={busImages} />
+        <View className="pb-4">
+          <Slider className="w-full" images={busImages} />
         </View>
         <View className="">
           <Slider className="" images={busImages} />
         </View>
-        <Text className="">
+        <Text style={styles.text}>
           Visita nuestro sitio web oficial para mas información
         </Text>
         <Button title="Ir al sitio" onPress={handlePress} />

@@ -12,6 +12,7 @@ export default function TabLayout() {
 
   return (
     <Tabs
+      initialRouteName="dashboard"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].accent,
         headerShown: false,
@@ -21,14 +22,15 @@ export default function TabLayout() {
           ios: {
             // Use a transparent background on iOS to show the blur effect
             position: "absolute",
-            borderTopLeftRadius: 40,
-            borderTopRightRadius: 40,
+            borderTopLeftRadius: 50,
+            borderTopRightRadius: 50,
+            backgroundColor: Colors[colorScheme ?? "light"].secondary,
           },
           default: {
             // Use a solid background on Android
             backgroundColor: Colors[colorScheme ?? "light"].secondary,
-            borderTopLeftRadius: 40,
-            borderTopRightRadius: 40,
+            borderTopLeftRadius: 50,
+            borderTopRightRadius: 50,
           },
         }),
       }}
